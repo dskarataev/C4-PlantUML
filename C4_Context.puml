@@ -12,6 +12,8 @@
 
 !define PERSON_BG_COLOR #08427B
 !define EXTERNAL_PERSON_BG_COLOR #686868
+!define PRODUCT_BG_COLOR #17538F
+!define EXTERNAL_PRODUCT_BG_COLOR #5E5D5D
 !define SYSTEM_BG_COLOR #1168BD
 !define EXTERNAL_SYSTEM_BG_COLOR #999999
 
@@ -29,6 +31,20 @@ skinparam rectangle<<external_person>> {
     StereotypeFontColor ELEMENT_FONT_COLOR
     FontColor ELEMENT_FONT_COLOR
     BackgroundColor EXTERNAL_PERSON_BG_COLOR
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<product>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor PRODUCT_BG_COLOR
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_product>> {
+    StereotypeFontColor ELEMENT_FONT_COLOR
+    FontColor ELEMENT_FONT_COLOR
+    BackgroundColor EXTERNAL_PRODUCT_BG_COLOR
     BorderColor #8A8A8A
 }
 
@@ -69,6 +85,8 @@ legend right
 |=              |= Type |
 |<PERSON_BG_COLOR>      | person |
 |<EXTERNAL_PERSON_BG_COLOR>      | external person |
+|<PRODUCT_BG_COLOR>   | product |
+|<EXTERNAL_PRODUCT_BG_COLOR>      | external product |
 |<SYSTEM_BG_COLOR>   | system |
 |<EXTERNAL_SYSTEM_BG_COLOR>      | external system |
 endlegend
@@ -82,6 +100,12 @@ endlegend
 
 !define Person_Ext(e_alias, e_label) rectangle "==e_label" <<external_person>> as e_alias
 !define Person_Ext(e_alias, e_label, e_descr) rectangle "==e_label\n\n e_descr" <<external_person>> as e_alias
+
+!define Product(e_alias, e_label) rectangle "==e_label" <<product>> as e_alias
+!define Product(e_alias, e_label, e_descr) rectangle "==e_label\n\n e_descr" <<product>> as e_alias
+
+!define Product_Ext(e_alias, e_label) rectangle "==e_label" <<external_product>> as e_alias
+!define Product_Ext(e_alias, e_label, e_descr) rectangle "==e_label\n\n e_descr" <<external_product>> as e_alias
 
 !define System(e_alias, e_label) rectangle "==e_label" <<system>> as e_alias
 !define System(e_alias, e_label, e_descr) rectangle "==e_label\n\n e_descr" <<system>> as e_alias
@@ -99,4 +123,5 @@ endlegend
 ' ##################################
 
 !define Enterprise_Boundary(e_alias, e_label) Boundary(e_alias, e_label, "Enterprise")
+!define Product_Boundary(e_alias, e_label) Boundary(e_alias, e_label, "Product")
 !define System_Boundary(e_alias, e_label) Boundary(e_alias, e_label, "System")
